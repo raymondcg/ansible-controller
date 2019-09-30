@@ -65,5 +65,3 @@ RUN chmod +x /bin/docker-entrypoint.sh
 
 ENTRYPOINT ["/bin/sh","/bin/docker-entrypoint.sh"]
 CMD ["ansible-playbook","--version"]
-
-ENTRYPOINT ["ansible-playbook"]
