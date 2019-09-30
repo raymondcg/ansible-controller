@@ -58,6 +58,12 @@ ENV PYTHONPATH /ansible/lib
 ENV PATH /ansible/bin:$PATH
 ENV ANSIBLE_LIBRARY /ansible/library
 
-WORKDIR /ansible/playbooks
+WORKDIR /ansible/playbook
+
+ADD docker-entrypoint.sh /bin/docker-entrypoint.sh
+RUN chmod +x /bin/docker-entrypoint.sh
+
+ENTRYPOINT ["/bin/sh","/bin/docker-entrypoint.sh"]
+CMD ["ansible-playbook","--version"]
 
 ENTRYPOINT ["ansible-playbook"]
