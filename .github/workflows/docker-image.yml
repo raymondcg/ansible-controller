@@ -22,7 +22,8 @@ jobs:
     -
       name: Set Image Tag Name - Other
       if: ${{ github.ref != 'refs/heads/master' }}
-      run: echo "TAG_NAME=$(echo '$GITHUB_SHA')" >> $GITHUB_ENV
+      run: echo "TAG_NAME=$(echo '$GITHUB_REF' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
+      #run: echo "TAG_NAME=$(echo '$GITHUB_SHA')" >> $GITHUB_ENV
       shell: bash
     -
       name: Checkout 
