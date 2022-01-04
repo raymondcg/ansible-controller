@@ -14,13 +14,13 @@ jobs:
     - name: Build the Docker image
       #run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
       run: |
-        docker build
-        --build-arg http_proxy=$http_proxy
-        --build-arg https_proxy=$https_proxy
-        --build-arg no_proxy=$no_proxy
-        --build-arg VCS_REF=os.environ['GITHUB_SHA']
-        --tag necrobraska/ansible-controller:latest
-        .
+        docker build \
+          --build-arg http_proxy=$http_proxy \
+          --build-arg https_proxy=$https_proxy \
+          --build-arg no_proxy=$no_proxy \
+          --build-arg VCS_REF=os.environ['GITHUB_SHA'] \
+          --tag necrobraska/ansible-controller:latest \
+         .
 
   push:
     runs-on: ubuntu-latest
