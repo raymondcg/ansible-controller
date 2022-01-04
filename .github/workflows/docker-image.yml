@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: |
+    - run: |
         docker build \
           --build-arg http_proxy=$http_proxy \
           --build-arg https_proxy=$https_proxy \
@@ -20,6 +20,6 @@ jobs:
           --build-arg VCS_REF=os.environ['GITHUB_SHA'] \
           --tag necrobraska/ansible-controller:latest \
          .
-    - uses: actions/checkout@v2
     - name: Push the Docker image
+    - uses: actions/checkout@v2
     - run: docker push necrobraska/ansible-controller:latest
