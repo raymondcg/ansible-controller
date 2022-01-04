@@ -15,6 +15,16 @@ jobs:
       run: echo "REPOSITORY_NAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
       shell: bash
     -
+      name: Set Image Tag Name - Master
+      if: ${{ github.ref == 'refs/heads/master' }}
+      run: echo "TAG_NAME=$(echo 'latest')" >> $GITHUB_ENV
+      shell: bash
+    -
+      name: Set Image Tag Name - Other
+      if: ${{ github.ref != 'refs/heads/master' }}
+      run: echo "TAG_NAME=$(echo '$GITHUB_SHA')" >> $GITHUB_ENV
+      shell: bash
+    -
       name: Checkout 
       uses: actions/checkout@v2
     -
@@ -33,4 +43,4 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.REPOSITORY_NAME }}:latest
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ env.REPOSITORY_NAME }}:${{ env.TAG_NAME }}
