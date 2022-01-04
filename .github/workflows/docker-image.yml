@@ -20,5 +20,6 @@ jobs:
           --build-arg VCS_REF=os.environ['GITHUB_SHA'] \
           --tag necrobraska/ansible-controller:latest \
          .
+    - uses: actions/checkout@v2
     - name: Push the Docker image
     - run: docker push necrobraska/ansible-controller:latest
