@@ -18,7 +18,7 @@ jobs:
     -
       name: Set Image Tag Name - Other
       if: ${{ github.ref != 'refs/heads/master' }}
-      run: echo "TAG_NAME=$(echo '${{ github.ref_name')" >> $GITHUB_ENV
+      run: echo "TAG_NAME=$(echo '${{ github.ref_name }}')" >> $GITHUB_ENV
       shell: bash
     -
       name: Checkout 
