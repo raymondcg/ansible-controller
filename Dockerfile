@@ -12,7 +12,7 @@ RUN set -x && \
 	rm -rf /var/cache/apk/* \
     \
     echo "==> Adding hosts for convenience..."  && \
-	mkdir -p /etc/ansible /ansible /tmp/.ssh /root/.ssh && \
+	mkdir -p /etc/ansible /ansible && \
     echo "[local]" >> /etc/ansible/hosts && \
     echo "localhost" >> /etc/ansible/hosts
  
@@ -30,5 +30,4 @@ WORKDIR /ansible/playbook
 ADD docker-entrypoint.sh /bin/docker-entrypoint.sh
 RUN chmod +x /bin/docker-entrypoint.sh
 
-ENTRYPOINT ["/bin/sh","/bin/docker-entrypoint.sh"]
 CMD ["ansible-playbook","--version"]
