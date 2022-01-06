@@ -27,7 +27,4 @@ ENV ANSIBLE_LIBRARY /ansible/library
 
 WORKDIR /ansible/playbook
 
-ADD docker-entrypoint.sh /bin/docker-entrypoint.sh
-RUN chmod +x /bin/docker-entrypoint.sh
-
 CMD ["ansible-playbook","--version"]
